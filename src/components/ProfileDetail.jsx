@@ -108,6 +108,17 @@ export default function ProfileDetail({ profile, resources }) {
           )}
         </div>
 
+        {(profile.skills_description || profile.professional_interests || profile.career_path || profile.hobbies || profile.proudest_project) && (
+          <ProfileAbout profile={profile} />
+        )}
+
+        {profile.fun_fact && (
+          <blockquote className="profile-fun-fact">
+            "{profile.fun_fact}"
+            <cite>— {profile.name.split(' ')[0]}</cite>
+          </blockquote>
+        )}
+
         {resources && resources.length > 0 && (
           <div>
             <h3 style={{ fontSize: '1rem', marginBottom: 12 }}>Shared Resources</h3>
@@ -142,6 +153,38 @@ export default function ProfileDetail({ profile, resources }) {
           </div>
         )}
       </div>
+    </div>
+  );
+}
+
+function ProfileAbout({ profile }) {
+  const firstName = profile.name.split(' ')[0];
+  const hasSkillsOrInterests = profile.skills_description || profile.professional_interests;
+  const hasCareer = profile.career_path;
+  const hasHobbies = profile.hobbies;
+  const hasProject = profile.proudest_project;
+
+  return (
+    <div className="profile-about" style={{ marginBottom: 24 }}>
+      <h3 style={{ fontSize: '1rem', marginBottom: 14 }}>About {firstName}</h3>
+
+      {hasSkillsOrInterests && (
+        <p>
+          {profile.skills_description && `${firstName} ${profile.skills_description}`}
+          {profile.skills_description && profile.professional_interests && ' '}
+          {profile.professional_interests}
+        </p>
+      )}
+
+      {hasCareer && <p>{profile.career_path}</p>}
+
+      {hasHobbies && (
+        <p>Outside of work, {firstName.toLowerCase()} enjoys {profile.hobbies.toLowerCase().replace(/\.$/, '')}.</p>
+      )}
+
+      {hasProject && (
+        <p>The project they're most proud of is {profile.proudest_project.replace(/\.$/, '')}.</p>
+      )}
     </div>
   );
 }

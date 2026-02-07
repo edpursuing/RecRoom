@@ -240,6 +240,39 @@ img {
   min-height: 80px;
 }
 
+/* Profile About */
+.profile-about p {
+  color: var(--color-gray-dark);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.profile-about p:last-child {
+  margin-bottom: 0;
+}
+
+.profile-fun-fact {
+  border-left: 3px solid var(--color-gold);
+  padding: 14px 18px;
+  margin-top: 20px;
+  background: #FFF8F0;
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  font-style: italic;
+  color: var(--color-gray-dark);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.profile-fun-fact cite {
+  display: block;
+  margin-top: 8px;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: var(--color-gray-mid);
+}
+
 /* Utility */
 .text-center { text-align: center; }
 .text-muted { color: var(--color-gray-mid); }
